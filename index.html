@@ -7,13 +7,49 @@
 </head>
 <body>
   
-<button class="triggerBtn">Trigger</button>
 <button class="openModalBtn">Open Modal</button>
 
-<div id="Container">
+<div id="container" style="display: none;">
 
-  
+  <div class="overlay"></div>
+
+  <div class="modalContent">
+    <h2>Welcome</h2>
+    <p>Hi, this is your Software Engineering Program</p>
+    <button class="closeBtn">X</button>
+  </div>
+
 </div>
 
 </body>
 </html>
+
+<script>
+
+const openModalBtn = document.querySelector(".openModalBtn");
+const container = document.querySelector("#container");
+const overlay = document.querySelector(".overlay");
+const modalContent = document.querySelector(".modalContent");
+const closeBtn = document.querySelector(".closeBtn");
+
+
+openModalBtn.addEventListener("click", function(){
+  container.style.display = "block";
+});
+
+closeBtn.addEventListener("click", function(){
+  container.style.display = "none";
+});
+
+overlay.addEventListener("click", function(){
+  container.style.display = "none";
+});
+
+document.addEventListener("keydown", function(){
+  
+  if(event.key === 'Escape'){
+    container.style.display = "none"; // if key is an escape key, display none/dispear off 
+  }
+});
+
+</script>
