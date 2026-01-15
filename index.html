@@ -10,13 +10,13 @@
   #container{
     display: grid;
     place-items: center;
-    height: 100vh;
+    height: 100%;
     width: 100%;
-    background-color: #00d9ff;
-    margin: 15% auto;
     padding: 20px;
-    width: 80%;
-    max-width: 600px;
+    position: fixed;
+    top: 0;
+    left:0;
+     
   }
 
   .overlay{
@@ -26,11 +26,78 @@
     width: 100vw;
     height: 100vh;
     background-color: rgba(0,0,0,0.7);
+    z-index: 1;
+    backdrop-filter: blur(5px);
   }
 
   .modalContent{
-    background-color: antiquewhite;
+    z-index: 2;
+    position: relative;
+    max-width: 500px;
+    background-color: white;
+    margin: auto;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: inset 0 -3em 3em rgb(0 200 0 / 30%),
+    0 0 0 2px white, 0.3em 0.3em 1em rgb(200 0 0 / 60%);
+    animation: modalOpen 0.3s ease-out;
   }
+
+  @keyframes modalOpen {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .openModalBtn{
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .openModalBtn:hover{
+    background-color: #0056b3;
+  }
+
+  .closeBtn{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+  } 
+
+  .closeBtn:hover{
+    background-color: #f0f0f0;
+    color: #000;
+  }
+
+  /*styles to make it responsive*/
+  @media(max-width:768px) {
+    .modalContent {
+      max-width: 90%;
+      padding: 20px;
+    }
+  }
+
 
 </style>
 
@@ -45,7 +112,7 @@
 
   <div class="modalContent">
     <h2>Welcome</h2>
-    <p>Hi, this is your Software Engineering Program</p>
+    <p>Welcome! 👋 <br>This is your Software Engineering Program. <br>Let’s get started!</p>
     <button class="closeBtn">X</button>
   </div>
 
@@ -63,24 +130,24 @@ const modalContent = document.querySelector(".modalContent");
 const closeBtn = document.querySelector(".closeBtn");
 
 
-openModalBtn.addEventListener("click", function(){
-  container.style.display = "block";
-});
+// openModalBtn.addEventListener("click", function(){
+//   container.style.display = "block";
+// });
 
-closeBtn.addEventListener("click", function(){
-  container.style.display = "none";
-});
+// closeBtn.addEventListener("click", function(){
+//   container.style.display = "none";
+// });
 
-overlay.addEventListener("click", function(){
-  container.style.display = "none";
-});
+// overlay.addEventListener("click", function(){
+//   container.style.display = "none";
+// });
 
-document.addEventListener("keydown", function(){
+// document.addEventListener("keydown", function(){
   
-  if(event.key === 'Escape'){
-    container.style.display = "none"; // if key is an escape key, display none/dispear off 
-  }
-});
+//   if(event.key === 'Escape'){
+//     container.style.display = "none"; // if key is an escape key, display none/dispear off 
+//   }
+// });
 
 
 
